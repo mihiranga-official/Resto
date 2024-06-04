@@ -1,0 +1,162 @@
+.highlighted {
+  color: #ff69b4;
+}
+.headingH {
+  color: #f196a7;
+}
+.headingS {
+  color: #fb88b4;
+}
+.headingN {
+  color: #f4538a;
+}
+.headingB {
+  color: #ff5bae;
+}
+.headingBr {
+  color: #d63484;
+}
+
+.table {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+}
+.table-wrapper {
+  width: 48%;
+  padding-right: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Align items vertically */
+  margin-bottom: 20px;
+}
+
+.imageH {
+  width: 25%;
+  max-width: 55%;
+  display: block;
+  border-radius: 55px;
+}
+.BtextH {
+  position: absolute;
+  font-size: 28px;
+  font-family: cursive;
+  top: 35%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.image-boxH {
+  width: 75%;
+  margin-bottom: 10px;
+  background-color: #f196a7;
+  border-radius: 55px;
+}
+
+.imageS {
+  width: 25%;
+  max-width: 55%;
+  display: block;
+  border-radius: 55px;
+}
+
+.BtextS {
+  position: absolute;
+  font-size: 28px;
+  font-family: cursive;
+  top: 35%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-boxS {
+  width: 75%;
+  margin-bottom: 10px;
+  background-color: #fb88b4;
+  border-radius: 55px;
+}
+
+.imageN {
+  width: 25%;
+  max-width: 55%;
+  display: block;
+  border-radius: 50px;
+}
+
+.BtextN {
+  position: absolute;
+  font-size: 28px;
+  font-family: cursive;
+  top: 35%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-boxN {
+  width: 75%;
+  margin-bottom: 10px;
+  background-color: #f4538a;
+  border-radius: 55px;
+}
+
+.imageB {
+  width: 25%;
+  max-width: 55%;
+  display: block;
+  border-radius: 55px;
+}
+
+.BtextB {
+  position: absolute;
+  font-size: 28px;
+  font-family: cursive;
+  top: 35%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-boxB {
+  width: 75%;
+  margin-bottom: 10px;
+  background-color: #ff5bae;
+  border-radius: 55px;
+}
+
+.imageBr {
+  width: 25%;
+  max-width: 55%;
+  display: block;
+  border-radius: 55px;
+}
+
+.BtextBr {
+  position: absolute;
+  position: absolute;
+  font-size: 28px;
+  font-family: cursive;
+  top: 35%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-boxBr {
+  width: 75%;
+  margin-bottom: 10px;
+  background-color: #d63484;
+  border-radius: 55px;
+}

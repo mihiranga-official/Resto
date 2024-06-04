@@ -1,0 +1,102 @@
+.heading {
+  font-family: "Georgia";
+  font-weight: 700;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #99154e;
+  text-align: center;
+  background-color: #ffc0cb;
+  border-radius: 55px;
+  padding: 20px;
+}
+
+.paragraph {
+  font-size: 15px;
+  margin-top: 20px;
+  line-height: 1.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.imageMap {
+  border: 2.5px solid #d20065;
+  max-width: 50%;
+  display: block;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.about-container {
+  background-color: #fde5ec; /* Background color for the box */
+  padding: 20px; /* Padding around the content */
+  margin-bottom: 20px; /* Bottom margin to create space between the box and the image */
+  border-radius: 10px;
+}
+
+
+.contact-box {
+  
+  width: 200px;
+  padding: 2;
+  margin-left: 880px;
+  margin-top: -250px;
+  margin-right: 20px; /* Add margin-right here */
+  margin-bottom: 120px;
+}
+
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Adjust spacing between items */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contact-info .icon {
+  margin-right: 5px; /* Adjust spacing between icon and text */
+  color: blue; /* Change icon color */
+}
+.contact-info .iconw {
+  margin-right: 5px; /* Adjust spacing between icon and text */
+  color: rgb(0, 255, 94); /* Change icon color */
+}
+.contact-info .iconG {
+  margin-right: 5px; /* Adjust spacing between icon and text */
+  color: rgb(255, 72, 0); /* Change icon color */
+}
+
+.icon {
+  margin-top: 10px; /* Adjust spacing between icons */
+}
+
+.service-images-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.service-images {
+  display: flex;
+  gap: 20px;
+}
+
+.service-image img {
+  width: 85%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow:  20px 15px rgba(246, 116, 116, 0.1);
+}
+
+.service-image {
+  flex: 8;
+  padding: 4px;
+}
+
+@media (max-width: 768px) {
+  .service-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-image {
+    width: 60%;
+  }
+}

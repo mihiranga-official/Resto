@@ -1,0 +1,20 @@
+.textFieldCustom {
+  width: 100%;
+  height: 55px;
+  background-color: #FFD1DA;
+  font-family:cursive;
+  font-size: 16px;
+  font-weight: 700; /* 700 is bold in this example */
+  color: #472626; /* This sets the text color to white */
+}
+.headN{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px; 
+  font-weight: 200; 
+  color: #572424; /* Set the text color */
+  margin-bottom: 7px; /* Add some margin to space out the headings */
+  
+  
+}
+
+  
