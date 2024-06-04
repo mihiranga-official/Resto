@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Layout from "./pages/Layout/Layout";
 import Home from "./pages/Home/Home";
 import NoPage from "./pages/NoPage/NoPage";
-import BookingPage from "./pages/Booking/BookingPage";
+import BookingPage from "./pages/Online Ordering/OrderOnline"
 import SignUp from "./pages/SignUp/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HairPrice from "./pages/PriceList/HairPrice";
@@ -36,6 +36,8 @@ import CreateData from "./pages/admin/Add/CreateData";
 import UserManage from "./pages/admin/UserManage";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdDashboard from "./pages/admin/AdDashboard";
+import OrderOnline from "./pages/Online Ordering/OrderOnline";
+import Footer from "./pages/Footer/Footer";
 
 
 
@@ -44,11 +46,12 @@ function App() {
       <ReduxProvider store={Store}>
         <BrowserRouter>
           <Layout />
+         
           <Routes>
             <Route exact path="/" element={<Dashboard />} />
             <Route path="Login" element={<Login />} />
             <Route path="Dashboard" element={<Dashboard />} />
-            <Route path="Booking" element={<BookingPage />} />
+            <Route path="OrderOnline" element={<OrderOnline />} />
             <Route path="Home" element={<Home />} />
             <Route path="SignUp" element={<SignUp />} />
             <Route path="HairPrices" element={<HairPrice />} />
@@ -86,6 +89,7 @@ function App() {
            
             {/* </Route> */}
           </Routes>
+          <Footer />
         </BrowserRouter>
       </ReduxProvider>
   );

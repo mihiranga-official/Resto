@@ -73,9 +73,6 @@ const Dashboard = () => {
 
   return (
     <>
-        
-   
-
        <Carousel autoPlay={true}>
         <div>
           <img src={Image2} />
@@ -262,9 +259,7 @@ const Dashboard = () => {
             <source src={videoOne} type="video/mp4" />
           </video>
         </div>
-        <Divider />
-     
-        <Footer />
+        <Divider />     
       </>
   );
 };

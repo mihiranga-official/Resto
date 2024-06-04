@@ -84,7 +84,7 @@ const Layout = () => {
           <nav className="horizontal-nav">
             <ul>
               <li>
-                <Link to="/Booking">Order Online</Link>
+                <Link to="/OrderOnline">Order Online</Link>
               </li>
               <li>
                 <Link to="/HairPrices">Hot Dishes</Link>

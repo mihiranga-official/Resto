@@ -29,6 +29,7 @@ const Footer = () => {
         py: 3,
         borderTop: "1px solid",
         borderColor: "divider",
+        mt:3
       }}
     >
       <Container maxWidth={false}>
@@ -104,7 +105,7 @@ const Footer = () => {
             <Typography
               variant="subtitle1"
               sx={{ ml: "18px", fontWeight: "700" }}
-              color="text.primary"
+              color="#E3651D"
               gutterBottom
             >
               SOCIAL MEDIA
