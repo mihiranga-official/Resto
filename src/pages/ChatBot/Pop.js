@@ -23,7 +23,7 @@ const AlertDialogSlide = () => {
         <IconButton
           sx={{
             ml: 10,
-            backgroundColor: "#E659A1",
+            backgroundColor: "#E3651D",
             color: "#FFFFFF",
             padding: "5px 5px",
             borderRadius: "10px",
@@ -34,7 +34,7 @@ const AlertDialogSlide = () => {
             gap: "8px",
             transition: "background-color 0.3s",
             "&:hover": {
-              backgroundColor: "#C1448C",
+              backgroundColor: "#E3651D",
             },
           }}
           onClick={toggleChatbot}

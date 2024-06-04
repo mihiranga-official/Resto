@@ -38,9 +38,9 @@ const Footer = () => {
             SALON LILLY
             </Typography> */}
             <div>
-              <Link to="/dashboard">
-                <img className="img" width="70%" src={Logo} alt="ImN" />
-              </Link>
+            <Link style={{textDecoration:'none'}}  to="/dashboard">
+           <Typography sx={{color:"#fb6107",fontSize:"35px",fontWeight:'500',fontFamily:"fantasy"}}>Lilly Resto</Typography>
+          </Link>
             </div>
           </Grid>
           <Grid item xs={6} sm={3} md={2}>
@@ -156,16 +156,17 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
+
+
+      <AlertDialogSlide />
       <Typography
         variant="body2"
         color="text.secondary"
         align="center"
         sx={{ pt: 4, fontSize: "15px" }}
       >
-        © 2024 SALON LILLY
+        © 2024 CODE FLEXA IT 
       </Typography>
-
-      <AlertDialogSlide />
     </Box>
   );
 };

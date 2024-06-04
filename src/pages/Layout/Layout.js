@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Layout.css"; //
-import { Button, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Button, Menu, MenuItem, Tooltip, Typography, colors } from "@mui/material";
 import Logo from "../../../src/Assets/Lillylogo.png";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +50,7 @@ const Layout = () => {
   //const disableLogout = () => {};
   const headerStyle = {
     height: "100px",
-    color: "#99154E",
+    color:"#fb6107",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between", // Align content to the left and right edges
@@ -63,6 +63,7 @@ const Layout = () => {
     letterSpacing: "1px",
     textTransform: "uppercase",
     fontFamily: "Arial, sans-serif",
+    color:"#fb6107"
     
   };
 
@@ -70,48 +71,45 @@ const Layout = () => {
     <>
       <div style={headerStyle}>
         <div>
-          <Link to="/dashboard">
-            <img className="img" width="30%" src={Logo} alt="ImN" />
+        <Link style={{textDecoration:'none'}}  to="/dashboard">
+           <Typography sx={{color:"#fb6107",fontSize:"35px",fontWeight:'500',fontFamily:"fantasy"}}>Lilly Resto</Typography>
           </Link>
         </div>
         <Typography
           variant="h6"
-          sx={{ mt: "5px" }}
+          sx={{ mt: "5px" ,color:"#fb6107"}}
           component="h6"
           style={salonNameStyle}
         >
           <nav className="horizontal-nav">
             <ul>
               <li>
-                <Link to="/Booking">Booking</Link>
+                <Link to="/Booking">Order Online</Link>
               </li>
               <li>
-                <Link to="/HairPrices">Hair</Link>
+                <Link to="/HairPrices">Hot Dishes</Link>
               </li>
               <li>
-                <Link to="/SkinPrices">Skin</Link>
+                <Link to="/SkinPrices">beverages</Link>
               </li>
               <li>
-                <Link to="/NailPrices">Nail</Link>
+                <Link to="/SkinPrices">Price List</Link>
               </li>
               <li>
-                <Link to="/BodyPrices">Body</Link>
+                <Link to="/about">About us</Link>
               </li>
-              <li>
-                <Link to="/BridalPrices">Bridal</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
+              
               {!isLoggedIn && ( // Conditionally render the login button only when not logged in
                 <Button
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    mb: "38px", // Added margin bottom
+                    mb: "40px", // Added margin bottom
                     marginLeft: "20px", // Adjusted margin left to push the avatar to the right
-                    backgroundColor: "#F27BBD",
+                    backgroundColor: "#fb6107",
                     fontFamily: "Georgia",
+                
+                    borderRadius:"35px",
                     "&:hover": {
                       backgroundColor: "#E659A1",
                     },

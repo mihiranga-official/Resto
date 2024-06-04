@@ -5,7 +5,7 @@
   transform: translate(-50%, -50%);
   width: 400px;
   height: 600px;
-  background: linear-gradient(135deg, #fb7de0, #b31a6ed6);
+  background: linear-gradient(135deg, #E3651D, #b31a6ed6);
   border: 1px solid #9be1e5;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -122,7 +122,7 @@
 .chatbot-button {
   padding: 10px;
   border: none;
-  background-color: #bd3975;
+  background-color: #F2613F;
   color: #0c0404;
   border-radius: 20px;
   cursor: pointer;

@@ -1,28 +1,19 @@
 import React from "react";
-import Button from "@mui/material/Button";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Footer from "../Footer/Footer";
 import { Divider, Link, Stack } from "@mui/material";
-import Image2 from "../../../src/Assets/Welcome.png";
+import Image2 from "../../../src/Assets/chef.jpg";
+import Image3 from "../../../src/Assets/chef2.jpg";
+import Image4 from "../../../src/Assets/chef3.jpg";
 import map1 from "../../../src/Assets/map1.png";
 import videoOne from "../../../src/Assets/videoOne.mp4";
 import { useNavigate } from "react-router-dom";
 
-// const salonNameStyle = {
-//   marginRight: "auto",
-//   fontFamily: "Arial, sans-serif",
-//   fontWeight: "bold",
-//   fontSize: "15px",
-//   letterSpacing: "2px",
-//   textTransform: "uppercase",
-// };
-
-// const listStyle = {
-//   marginLeft: "auto",
-//   fontSize: "16px", // Set smaller font size for the list
-// };
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const cardContainerStyle = {
   display: "flex",
@@ -56,7 +47,15 @@ const footerButtonStyle = {
   display: "flex",
   justifyContent: "center",
 };
-
+// Define custom CSS to hide the image preview
+const customCarouselStyle = {
+  ".carousel .slide .thumb": {
+    display: "none",
+  },
+  ".carousel .thumbs-wrapper": {
+    display: "none",
+  },
+};
 const Dashboard = () => {
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
 
@@ -71,129 +70,34 @@ const Dashboard = () => {
   const GoToBookingPage = () => {
     navigate("/booking");
   };
-  // const img = {
-  //   width: "100%" /* Set width to 100% of viewport width */,
-  //   height: "auto" /* Maintain aspect ratio */,
-  // };
 
   return (
-    <div style={{ overflowX: "hidden" }}>
-      {" "}
-      {/* Add overflowX: hidden to prevent horizontal scrolling */}
-      <div style={{ justifyContent: "flex-start", maxWidth: "100vw" }}>
-        {" "}
-        {/* Set max-width to fill entire viewport width */}
-        <div
-          style={{
-            position: "flex-start",
-            textAlign: "flex-start",
-            backgroundColor: "#D20065",
-            borderBottomLeftRadius: "250px",
-            borderBottomRightRadius: "250px",
-            overflow: "hidden",
-          }}
-        >
-          {" "}
-          {/* Add background color */}
-          <img
-            className="img"
-            width="30%"
-            height="auto"
-            alignItems="left"
-            src={Image2}
-            alt="Imgn"
-            style={{
-              borderBottomLeftRadius: "50px",
-              borderBottomRightRadius: "280px",
-            }}
-          />
-          <div style={footerButtonStyle}>
-            <Link>
-              <Button
-                onClick={GoToBookingPage}
-                variant="contained"
-                color="primary"
-                sx={{
-                  mb: "10px",
-                  borderRadius: "20px",
-                  padding: "15px 30px",
-                  fontSize: "16px",
-                  backgroundColor: "#F27BBD",
-                  fontFamily: "Georgia",
-                  "&:hover": {
-                    backgroundColor: "#E659A1",
-                  },
-                }}
-              >
-                Book Now
-              </Button>
-            </Link>
-          </div>
-          <span
-            style={{
-              position: "absolute",
-              top: "350px", // Adjust the top position as needed
-              left: "55%",
-              color: "#FFF7FC",
-              transform: "translateX(-50%)",
-              fontSize: "55px",
-              fontWeight: "600",
-              fontFamily: "Georgia",
-            }}
-          >
-            Welcome to Salon Lilly
-          </span>
-        </div>
-        <Typography
-          variant="h4"
-          component="h4"
-          sx={{
-            textAlign: "center",
-            mt: "10px",
-            fontWeight: "bold",
-            color: "#99154E",
-            fontFamily: "Georgia",
-          }}
-        >
-          OUR SERVICES
-        </Typography>
-        <div style={cardContainerStyle}>
-          {[0, 1, 2, 3, 4].map((index) => (
-            <Card
-              key={index}
-              style={{
-                ...cardStyle,
+    <>
+        
+   
 
-                backgroundColor: hoveredIndex === index ? "#E659A1" : "#FED7E2",
-              }}
-              sx={cardStyle}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-              elevation={3}
-            >
-              <CardContent style={cardContentStyle}>
-                <Typography
-                  variant="h5"
-                  component="h2"
-                  fontFamily="cursive"
-                  sx={{ fontWeight: "bold" }}
-                >
-                  {["HAIR", "SKIN", "NAILS", "BODY", "BRIDAL"][index]}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
+       <Carousel autoPlay={true}>
+        <div>
+          <img src={Image2} />
         </div>
+        <div>
+          <img src={Image3} />
+        </div>
+        <div>
+          <img src={Image4} />
+        </div>
+      </Carousel>
+
         <Typography
           variant="h3"
           align="center"
           fontWeight="bold"
           fontFamily="Georgia"
-          color={"#99154E"}
+          color={"#fb6107"}
           sx={{ mt: "10px" }}
           gutterBottom
         >
-          WE'LL STYLE, WHILE YOU SMILE
+       "Savor the Flavor, Every Bite Tells a Story"
         </Typography>
         <div
           style={{
@@ -201,20 +105,20 @@ const Dashboard = () => {
             fontWeight: "700",
             fontSize: "50px",
             fontFamily: "Georgia",
-            color: "#E659A1",
+            color: "#222831",
           }}
         >
-          <p> Welcome to Salon Lilly</p>
+          <p> Welcome to Lilly Resto </p>
           <Typography
             variant="h3"
             align="center"
             fontWeight="bold"
             fontFamily="Georgia"
-            color={"#99154E"}
+            color={"#fb6107"}
             sx={{ mt: "10px" }}
             gutterBottom
           >
-            CREATING A BEAUTIFUL COMMUNITY
+            CREATING A HEALTHY FOOD COMMUNITY AROUND SRI LANKA
           </Typography>
         </div>
         <div
@@ -222,16 +126,16 @@ const Dashboard = () => {
             textAlign: "center",
             // fontWeight: "700",
             fontSize: "50px",
-            color: "#E659A1",
+            color: "#686D76",
 
             fontFamily: "cursive",
           }}
         >
-          <p>Look Good & Feel Good!</p>
+          <p>Eat Fresh, Live Well: Healthy Choices, Happy Lives</p>
         </div>
         <Stack
           direction="row"
-          sx={{ textAlign: "center", backgroundColor: "#FDEFEF" }}
+          sx={{ textAlign: "center", backgroundColor: "#F6B17A" }}
         >
           <h1
             style={{
@@ -359,10 +263,9 @@ const Dashboard = () => {
           </video>
         </div>
         <Divider />
-        <img className="img" src={map1} alt="map" />
+     
         <Footer />
-      </div>
-    </div>
+      </>
   );
 };
 
