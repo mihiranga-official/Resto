@@ -1,19 +1,48 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Footer from "../Footer/Footer";
 import "./priceList.css";
-import salonIcon from "../../../src/Assets/salonicon.jpg";
 import NailImage from "../../../src/Assets/NailImg.png";
 import { getDatabase, ref, get } from "firebase/database";
-
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
+import ButterChicken from "../../Assets/Butter-Chicken.jpg"
 function ReadData() {
   let [NailPriceArray, setNailPriceArray] = React.useState([]);
+
+  const priceList = [
+    {
+      title: "Cock 125 ML",
+      image: ButterChicken,
+      description:
+        "Also known as Murgh Makhani, this beloved curry originated in Punjab, a northern region of India.",
+      color: "#2F58CD",
+    },
+    {
+      title: "Cock 125 ML",
+      image: ButterChicken,
+      description:
+        "Also known as Murgh Makhani, this beloved curry originated in Punjab, a northern region of India.",
+      color: "#2F58CD",
+    },
+    {
+      title: "Cock 125 ML",
+      image: ButterChicken,
+      description:
+        "Also known as Murgh Makhani, this beloved curry originated in Punjab, a northern region of India.",
+      color: "#2F58CD",
+    },
+  ];
 
   React.useEffect(() => {
     const fetchDataNail = async () => {
@@ -22,7 +51,6 @@ function ReadData() {
       const snapshot = await get(dbRef);
 
       if (snapshot.exists()) {
-        
         setNailPriceArray(Object.values(snapshot.val()));
       } else {
         console.error("No data available");
@@ -32,44 +60,47 @@ function ReadData() {
     fetchDataNail();
   }, []);
   return (
-    <div className="table">
-    <div className="table-wrapper">
-      <TableContainer component={Paper}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={salonIcon}
-            alt="Salon Icon"
-            className="icon"
-            style={{ color: "#BC7FCD" }}
-          />
-          <h2 className="headingN">MANICURE | PEDICURE</h2>
-        </div>
-
-        <Table sx={{ minWidth: 500 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell className="highlighted">
-                <b>Type</b>
-              </TableCell>
-              <TableCell align="right" className="highlighted">
-                <b>Standard Price(Rs)</b>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {NailPriceArray.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell component="th" scope="row">
-                  {row.type}
-                </TableCell>
-                <TableCell align="right">{row.price}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-  </div>
+    <Grid container spacing={2}>
+      {" "}
+      {/* Add Grid container */}
+      {priceList.map((card) => (
+        <Grid item xs={4} key={card.title}>
+          {" "}
+          {/* Set item width for 3 cards */}
+          <Card sx={{ maxWidth: 345 }}>
+            <CardHeader
+              style={{ color: card.color, fontWeight: "600" }}
+              title={card.title}
+            />
+            <CardMedia
+              component="img"
+              height="300px"
+              image={card.image}
+              alt={card.title + " dish"}
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.primary">
+                {card.description}
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <Button
+                sx={{ backgroundColor: "#E3651D", ml: "auto" }}
+                variant="contained"
+              >
+                Order now
+              </Button>
+              <IconButton sx={{ ml: "auto" }} aria-label="share">
+                <ShareIcon />
+              </IconButton>
+            </CardActions>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 }
 export default function BasicTable() {
@@ -88,11 +119,9 @@ export default function BasicTable() {
         </div>
       </div>
 
-      
-      <ReadData/>
-     
-      <Footer />
-      </div>
-    
+      <ReadData />
+
+  
+    </div>
   );
 }
