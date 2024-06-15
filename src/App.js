@@ -38,6 +38,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdDashboard from "./pages/admin/AdDashboard";
 import OrderOnline from "./pages/Online Ordering/OrderOnline";
 import Footer from "./pages/Footer/Footer";
+import FoodPriceList from "./pages/PriceList/FoodPriceList";
 
 
 
@@ -56,33 +57,37 @@ function App() {
             <Route path="SignUp" element={<SignUp />} />
             <Route path="HairPrices" element={<HairPrice />} />
             <Route path="SkinPrices" element={<SkinPrice />} />
-            <Route path="Admin" element={<Admin />} />
+       
             <Route path="NailPrices" element={<NailPrice />} />
             <Route path="BodyPrices" element={<Bodyprice />} />
             <Route path="BridalPrices" element={<BridalPrice />} />
             <Route path="About" element={<About />} />
             <Route path="Checkout" element={<CheckOut />} />
-            {/* <Route path="BookingDetails" element={<BookingDetails />} /> */}
-            <Route path="PaymentDetails" element={<PaymentDetails />} />
-            <Route path="OrderSummury" element={<ReviewBooking />} />
-            <Route path="NewApoinment" element={<NewApoinment />} />
-            <Route path="Apoinments" element={<Appoinment />} />
+            <Route path="FoodPriceList" element={<FoodPriceList />} />
+
+            
+      
+
+        
+ 
+    
+
+            <Route path="Alert" element={<AlertDialogSlide />} />
+            <Route path="ChatBot" element={<ChatbotLauncher />} />
+            <Route path="ChatBotui" element={<Chatbot />} />
+        
+ {/* admin section */}
+            <Route path="PriceUpdate" element={<PriceUpdate />} /> 
+            <Route path="UserManage" element={<UserManage />} />
+            <Route path="Admin" element={<Admin />} />
             <Route path="AddAdmin" element={<AddAdmin />} />
+            <Route path="AdminLogin" element={<AdminLogin />} />
+            <Route path="AdminDashboard" element={<AdminDashboard />} />
+            <Route path="AdDashboard" element={<AdDashboard />} />
             <Route path="Inbox" element={<Inbox />} />
             <Route path="SentMail" element={<SentMail />} />
             <Route path="Setting" element={<Setting />} />
             <Route path="LogOut" element={<LogOut />} />
-            <Route path="AdminLogin" element={<AdminLogin />} />
-            <Route path="ReviewBooking" element={<ReviewBooking />} />
-            <Route path="Alert" element={<AlertDialogSlide />} />
-            <Route path="ChatBot" element={<ChatbotLauncher />} />
-            <Route path="ChatBotui" element={<Chatbot />} />
-            <Route path="PriceUpdate" element={<PriceUpdate />} /> 
-            <Route path="CreateData" element={<CreateData />} />
-            <Route path="UserManage" element={<UserManage />} />
-            <Route path="AdminDashboard" element={<AdminDashboard />} />
-            <Route path="AdDashboard" element={<AdDashboard />} />
-
            
             <Route path="*" element={<NoPage />} />
 

@@ -3,36 +3,40 @@ import { auth } from "../../services/firebaseConfig";
 import bg from "../../Assets/salonBg.jpg";
 import { Table } from "react-bootstrap";
 import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
-import { get, getDatabase, ref } from "firebase/database";
+//import { get, getDatabase, ref } from "firebase/database";
+import { fetchDataForBooking } from "../admin/AdminDashboard";
 
 const Home = () => {
   const [user, setUser] = useState(null);
   const [userDataShow, setUserDataShow] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    (async function () {
+      const bookingData = await fetchDataForBooking();
+      setUserDataShow(bookingData);
+    })();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const db = getDatabase();
-      const dbRef = ref(db, "users");
-      const snapshot = await get(dbRef);
+  // const fetchData = async () => {
+  //   try {
+  //     const db = getDatabase();
+  //     const dbRef = ref(db, "UserData");
+  //     const snapshot = await get(dbRef);
 
-      if (snapshot.exists()) {
-        const dataSnapshot = snapshot.val();
-        const dataArr = Object.entries(dataSnapshot).map(([key, value]) => ({
-          key,
-          ...value,
-        }));
-        setUserDataShow(dataArr);
-      } else {
-        console.error("No data available");
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //     if (snapshot.exists()) {
+  //       const dataSnapshot = snapshot.val();
+  //       const dataArr = Object.entries(dataSnapshot).map(([key, value]) => ({
+  //         key,
+  //         ...value,
+  //       }));
+  //       setUserDataShow(dataArr);
+  //     } else {
+  //       console.error("No data available");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userData) => {
@@ -59,41 +63,12 @@ const Home = () => {
     <>
       <div
         style={{
-          position: "fixed",
-          top: "150px",
-          left: "70%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          alignItems: "center",
-          fontSize: "56px",
-          fontWeight: "700",
-          color: "#fff",
-          zIndex: 9999,
-        }}
-      >
-        <span>Hello</span>
-        <span
-          role="img"
-          aria-label="wave"
-          style={{ fontSize: "56px", marginLeft: "20px" }}
-        >
-          👋
-        </span>
-        {user && (
-          <h4 style={{ marginLeft: "10px" }}>
-            {getFirstNameFromEmail(user.email)}
-          </h4>
-        )}
-      </div>
-      <div
-        style={{
-          position: "flex-start",
-          textAlign: "flex-start",
+          position: "relative",
           backgroundColor: "#D20065",
           borderBottomLeftRadius: "250px",
           borderBottomRightRadius: "250px",
           overflow: "hidden",
-          marginTop: "100px",
+          // marginTop: "100px",
         }}
       >
         <img
@@ -108,6 +83,29 @@ const Home = () => {
             borderBottomRightRadius: "280px",
           }}
         />
+        <div
+          style={{
+            position: "absolute",
+            top: "8px",
+            right: "50%",
+            left: '50%',
+            fontSize: '56px'
+          }}
+        >
+          <span>Hello</span>
+          <span
+            role="img"
+            aria-label="wave"
+            style={{ marginLeft: "20px" }}
+          >
+            👋
+          </span>
+          {user && (
+            <span style={{ marginLeft: "10px" }}>
+              {getFirstNameFromEmail(user.email)}
+            </span>
+          )}
+        </div>
       </div>
       <Table
         sx={{
@@ -124,23 +122,29 @@ const Home = () => {
           <TableHead>
             <TableRow>
               <TableCell>
-                <b>Name</b>
+                <b>Service</b>
               </TableCell>
               <TableCell>
-                <b>Phone Number</b>
+                <b>Date</b>
               </TableCell>
               <TableCell>
-                <b>Email</b>
+                <b>Time</b>
+              </TableCell>
+              <TableCell>
+                <b>Notes</b>
               </TableCell>
             </TableRow>
           </TableHead>
-          {userDataShow.map((row, index) => (
-            <TableRow key={index}>
-              <TableCell>{`${row.firstName} ${row.lastName}`}</TableCell>
-              <TableCell>{row.phoneNumber}</TableCell>
-              <TableCell>{row.email}</TableCell>
-            </TableRow>
-          ))}
+          {userDataShow
+            .filter((d) => d.Email === user.email)
+            .map((row, index) => (
+              <TableRow key={index}>
+                <TableCell>{row.Service}</TableCell>
+                <TableCell>{row.Date}</TableCell>
+                <TableCell>{row.Time}</TableCell>
+                <TableCell>{row.Notes}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </>
