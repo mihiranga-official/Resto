@@ -105,7 +105,7 @@ const Dashboard = () => {
             color: "#222831",
           }}
         >
-          <p> Welcome to Lilly Resto </p>
+          <p> Welcome to Resto </p>
           <Typography
             variant="h3"
             align="center"

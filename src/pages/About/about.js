@@ -57,7 +57,7 @@ function About() {
             <div class="iconG">
               <AlternateEmailIcon />
             </div>
-            <p>lilly@gmail.com</p>
+            <p>Resto@gmail.com</p>
           </div>
         </div>
       </div>
@@ -75,8 +75,6 @@ function About() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

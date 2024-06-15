@@ -40,7 +40,7 @@ const Footer = () => {
             </Typography> */}
             <div>
             <Link style={{textDecoration:'none'}}  to="/dashboard">
-           <Typography sx={{color:"#fb6107",fontSize:"35px",fontWeight:'500',fontFamily:"fantasy"}}>Lilly Resto</Typography>
+           <Typography sx={{color:"#fb6107",fontSize:"35px",fontWeight:'500',fontFamily:"fantasy"}}>Resto</Typography>
           </Link>
             </div>
           </Grid>

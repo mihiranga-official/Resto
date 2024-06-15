@@ -18,14 +18,9 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import GoogleIconButton from "../../Components/GoogleButton";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import LoginIcon from '@mui/icons-material/Login';
 
 const Login = () => {
-  // State variables to store username and password
-  // const [credentials, setCredentials] = useState({
-  //   username: "",
-  //   password: "",
-  // });
-
   // Function to handle Google sign-in
   const logGoogleUser = async () => {
     try {
@@ -55,10 +50,10 @@ const Login = () => {
         password
       );
       // Successful login
-
-      navigate("/dashboard");
       console.log(userCredential.user);
       toast.success("Logged in successfully.");
+      navigate("/dashboard");
+    
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -70,6 +65,9 @@ const Login = () => {
   const onSignUp = (e) => {
     navigate("/signup");
   };
+  const LogAdmin = (e) => {
+    navigate("/AdminLogin");
+  };
 
   return (
     <div
@@ -77,7 +75,9 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "85vh",
+       
+        
       }}
     >
       <Container maxWidth="xs">
@@ -94,6 +94,7 @@ const Login = () => {
             }}
             gutterBottom
           >
+            
             Login
           </Typography>
 
@@ -138,7 +139,9 @@ const Login = () => {
                       backgroundColor: "#E659A1",
                     },
                   }}
+                  startIcon={<LoginIcon sx={{ mr: 1 }} />}
                 >
+                 
                   Login
                 </Button>
 
@@ -148,7 +151,7 @@ const Login = () => {
                 />
               </Grid>
 
-              <Grid item sx={{ alignItems: "center", ml: "55px", mt: "10px" }}>
+              <Grid item sx={{ alignItems: "center", ml: "40px", mt: "10px" }}>
                 <Button
                   color="primary"
                   style={{ textTransform: "none", mt: "25px" }}
@@ -168,7 +171,7 @@ const Login = () => {
                 justifyContent="center"
                 sx={{ ml: "40px", mt: "20px" }}
               >
-                <Grid item style={{ alignItems: "center" }}>
+                <Grid item style={{ alignItems: "center", marginLeft:"-20px" }}>
                   <Typography variant="h7">OR</Typography>
                 </Grid>
               </Grid>
@@ -200,6 +203,24 @@ const Login = () => {
                 </Grid>
               </Grid>
             </Grid>
+            <Grid item style={{ alignItems: "center", marginLeft:"160px" }}>
+                  <Typography variant="h7">OR</Typography>
+                </Grid>
+            <Grid item sx={{ alignItems: "center", ml: "55px", mt: "10px" }}>
+                <Button
+                  color="primary"
+                  style={{ textTransform: "none", mt: "25px" }}
+                >
+                  <Typography
+                    variant="body1"
+                    onClick={LogAdmin}
+                    style={{ color: "#E659A1", marginLeft:60 }}
+                  >
+                   
+                   Admin Login
+                  </Typography>
+                </Button>
+              </Grid>
           </form>
         </Paper>
       </Container>

@@ -2,7 +2,6 @@ import { Outlet, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Layout.css"; //
 import { Button, Menu, MenuItem, Tooltip, Typography, colors } from "@mui/material";
-import Logo from "../../../src/Assets/Lillylogo.png";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../services/firebaseConfig";
@@ -72,7 +71,7 @@ const Layout = () => {
       <div style={headerStyle}>
         <div>
         <Link style={{textDecoration:'none'}}  to="/dashboard">
-           <Typography sx={{color:"#fb6107",fontSize:"35px",fontWeight:'500',fontFamily:"fantasy"}}>Lilly Resto</Typography>
+           <Typography sx={{color:"#fb6107",fontSize:"45px",fontWeight:'500',fontFamily:"fantasy"}}>Resto</Typography>
           </Link>
         </div>
         <Typography
@@ -93,7 +92,7 @@ const Layout = () => {
                 <Link to="/SkinPrices">beverages</Link>
               </li>
               <li>
-                <Link to="/SkinPrices">Price List</Link>
+                <Link to="/FoodPriceList">Price List</Link>
               </li>
               <li>
                 <Link to="/about">About us</Link>

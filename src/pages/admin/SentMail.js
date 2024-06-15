@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import SendIcon from "@mui/icons-material/Send";
 import { Box, Button, CardContent, FormControlLabel, Grid, Select, TextField, Typography, MenuItem, Checkbox } from "@mui/material";
 import { get, getDatabase, ref } from "firebase/database";
+import Admin from "./Admin";
 
 const SentMail = () => {
   const [fromEmail, setFromEmail] = useState('salonlillysl@gmail.com');
@@ -88,13 +89,17 @@ const SentMail = () => {
 
   return (
     <Box>
+     <Admin/>
       <form onSubmit={handleSubmit}>
         <CardContent
           sx={{
             backgroundColor: "#EED3D9",
             borderRadius: 10,
             padding: 4,
-            minWidth: 300,
+            minWidth: 200,
+            width: 550, 
+            height: 630, 
+            marginLeft: 75,
           }}
         >
           <Typography
@@ -119,7 +124,7 @@ const SentMail = () => {
                 required
                 value={fromEmail}
                 disabled
-                sx={{ bgcolor: "white" }}
+                sx={{ bgcolor: "white",  fontFamily: "Verdana, Geneva, Tahoma, sans-serif",}}
               />
             </Grid>
             <Grid item xs={12}>

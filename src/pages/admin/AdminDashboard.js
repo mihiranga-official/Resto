@@ -16,8 +16,8 @@ import Admin from "./Admin";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import toast from "react-hot-toast";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import toast, { Toaster } from "react-hot-toast";
 
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -25,37 +25,41 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+export const fetchDataForBooking = async () => {
+  const db = getDatabase();
+  const dbRef = ref(db, "UserData");
+  const snapshot = await get(dbRef);
+
+  if (snapshot.exists()) {
+    console.log(
+      "data => ",
+      Object.values(snapshot.val()),
+      " => ",
+      snapshot.val()
+    );
+    const dataSnapshot = snapshot.val();
+    const dataArr = [];
+    for (let key in dataSnapshot) {
+      dataArr.push({ key, ...dataSnapshot[key] });
+    }
+    console.log("dataArr =>", dataArr);
+    return dataArr;
+  } else {
+    console.error("No data available");
+    return null;
+  }
+};
+
 function AdminDashboard() {
   const [bookingDataArray, setBookingDataArray] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const [selectedRecord, setSelectedRecord] = React.useState(null);
 
-  const fetchDataForBooking = async () => {
-    const db = getDatabase();
-    const dbRef = ref(db, "UserData");
-    const snapshot = await get(dbRef);
-
-    if (snapshot.exists()) {
-      console.log(
-        "data => ",
-        Object.values(snapshot.val()),
-        " => ",
-        snapshot.val()
-      );
-      const dataSnapshot = snapshot.val();
-      const dataArr = [];
-      for (let key in dataSnapshot) {
-        dataArr.push({ key, ...dataSnapshot[key] });
-      }
-      console.log("dataArr =>", dataArr);
-      setBookingDataArray(dataArr);
-    } else {
-      console.error("No data available");
-    }
-  };
-
   React.useEffect(() => {
-    fetchDataForBooking();
+    (async function () {
+      const bookingData = await fetchDataForBooking();
+      setBookingDataArray(bookingData);
+    })();
   }, []);
 
   const handleClickOpen = (record) => {
@@ -80,12 +84,12 @@ function AdminDashboard() {
       const recordRef = ref(db, `UserData/${selectedRecord.key}`);
 
       await remove(recordRef);
-      console.log("Record deleted successfully");
-      toast.success("Record deleted successfully");
+      console.log("Appointment Complete successfully");
+      toast.success("Appointment Complete successfully");
       fetchDataForBooking();
     } catch (error) {
-      console.error("Error deleting record:", error);
-      toast.error("Failed to delete record");
+      console.error("Error uncompleted appointment record:", error);
+      toast.error("Failed to uncompleted appointment record");
     } finally {
       handleClose();
     }
@@ -97,6 +101,7 @@ function AdminDashboard() {
   };
   return (
     <Box>
+      <Toaster toastOptions={{ duration: 9000 }} position="top-right" />
       <Admin />
       <Typography
         sx={{
@@ -113,9 +118,10 @@ function AdminDashboard() {
       <Typography
         sx={{
           fontWeight: "500",
-          fontSize: "20px",
+          fontSize: "24px",
           marginLeft: 36,
-          fontFamily: "Georgia, serif",
+          fontFamily: "cursive",
+          color: "#3572EF"
         }}
       >
         On going Appointments
@@ -144,7 +150,7 @@ function AdminDashboard() {
           <TableRow>
             <TableCell
               sx={{
-                width: "10%",
+                width: "8%",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -157,7 +163,7 @@ function AdminDashboard() {
             </TableCell>
             <TableCell
               sx={{
-                width: "18%",
+                width: "15%",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -170,7 +176,7 @@ function AdminDashboard() {
             </TableCell>
             <TableCell
               sx={{
-                width: "15%",
+                width: "8%",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -222,7 +228,7 @@ function AdminDashboard() {
             </TableCell>
             <TableCell
               sx={{
-                width: "8%",
+                width: "7%",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -317,11 +323,11 @@ function AdminDashboard() {
                   onClick={() => handleClickOpen(row)}
                   variant="outlined"
                   size="small"
-                  color="error"
+                  color="success"
                   fontFamily="Verdana, Geneva, Tahoma, sans-serif"
                 >
-                  <DeleteIcon />
-                  Delete
+                  <CheckCircleIcon />
+                  Close
                 </Button>
               </TableCell>
             </TableRow>
